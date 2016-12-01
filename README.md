@@ -11,7 +11,7 @@ $ docker run -it --rm --name gocd-monitor gocd-monitor
 You can also provide environment variables, for instance
 
 ```
-$ docker run -it --rm -e GOCD_SERVER_URL=https://myserver.gocd -e GOCD_USER gocduser -e GOCD_PASSWORD mypassword --name gocd-monitor gocd-monitor
+$ docker run -it --rm -e GOCD_SERVER_URL=https://myserver.gocd -e GOCD_USER=gocduser -e GOCD_PASSWORD=mypassword --name gocd-monitor gocd-monitor
 ```
 
 List of GOCD variables (with defaults)
