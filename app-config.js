@@ -14,6 +14,8 @@ var config = {
     // How often data from go should be refreshed in seconds
     goPollingInterval: process.env.GOCD_MONITOR_POLLING_INTERVAL,
     // If > 0 switches between pipeline and test results page every n seconds
-    switchBetweenPagesInterval: process.env.GOCD_MONITOR_SWITCH_PAGES_INTERVAL
+    switchBetweenPagesInterval: process.env.GOCD_MONITOR_SWITCH_PAGES_INTERVAL,
+    // Whether to display build labels
+    showBuildLabels: process.env.GOCD_MONITOR_SHOW_BUILD_LABELS
 }
 module.exports = config;
