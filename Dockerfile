@@ -11,7 +11,7 @@
 # authors:  dario@darioblanco.com
 # ------------------------------------------------------
 
-FROM node:7.2-alpine
+FROM node:9.3.0-alpine
 ENV NPM_CONFIG_LOGLEVEL warn
 
 # Set GoCD monitor default environment variables
@@ -22,6 +22,7 @@ ENV GOCD_USER admin
 ENV GOCD_PASSWORD password
 ENV GOCD_MONITOR_POLLING_INTERVAL 30
 ENV GOCD_MONITOR_SWITCH_PAGES_INTERVAL 0
+ENV GOCD_MONITOR_SHOW_BUILD_LABELS false
 
 # Install bash (for container ssh troubleshooting)
 RUN apk add --update bash && rm -rf /var/cache/apk/*
@@ -29,9 +30,9 @@ RUN apk add --update bash && rm -rf /var/cache/apk/*
 # Install Karmats GoCD Monitor
 RUN ["apk", "add", "--no-cache", "git"]
 RUN ["git", "clone", "https://github.com/karmats/gocd-monitor.git"]
-WORKDIR "/gocd-monitor"
+WORKDIR "gocd-monitor/"
 ADD app-config.js .
-RUN ["npm", "install"]
+RUN ["npm", "install", "--unsafe-perm"]
 
 # Run karmats GoCD Monitor when launching container
 ENTRYPOINT ["npm", "start"]
